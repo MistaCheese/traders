@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RunnerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-12-16T10:59:55" hostname="TULIMOV" time="8.618">
+<testsuite name="RunnerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-12-16T11:30:15" hostname="TULIMOV" time="9.617">
   <properties/>
-  <testcase name="check" classname="RunnerTest" time="8.618">
-    <failure message="junit.framework.ComparisonFailure: Значения не совпадают: 185,3544 - c сайта, 229,0730 - с бинанса  expected:&lt;[229,0730]&gt; but was:&lt;[185,3544]&gt;" type="junit.framework.ComparisonFailure">junit.framework.ComparisonFailure: Значения не совпадают: 185,3544 - c сайта, 229,0730 - с бинанса  expected:&lt;[229,0730]&gt; but was:&lt;[185,3544]&gt;
+  <testcase name="check" classname="RunnerTest" time="9.617">
+    <failure message="junit.framework.ComparisonFailure: Значения не совпадают: 247,1289 - c сайта, 232,2006 - с бинанса  expected:&lt;2[32,2006]&gt; but was:&lt;2[47,1289]&gt;" type="junit.framework.ComparisonFailure">junit.framework.ComparisonFailure: Значения не совпадают: 247,1289 - c сайта, 232,2006 - с бинанса  expected:&lt;2[32,2006]&gt; but was:&lt;2[47,1289]&gt;
 	at junit.framework.Assert.assertEquals(Assert.java:100)
 	at RunnerTest.check(RunnerTest.kt:58)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -62,11 +62,11 @@
   <system-out><![CDATA[Проверка версий драйвера
 Версии хрома и дравйера совпадают
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 46482
+  <system-err><![CDATA[Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 28961
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-дек. 16, 2021 1:59:56 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+дек. 16, 2021 2:30:16 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

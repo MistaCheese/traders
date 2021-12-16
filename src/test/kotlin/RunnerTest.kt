@@ -56,6 +56,7 @@ class RunnerTest {
 
         val or = String.format("%.4f", getAll().get())
         assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса ", or ,fr)
+        println("Значения совпадают: $fr - c сайта, $or - с бинанса, все ОК")
 
 
     }
