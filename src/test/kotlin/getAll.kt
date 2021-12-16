@@ -1,8 +1,8 @@
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import java.math.RoundingMode
-import java.text.DecimalFormat
+import com.mashape.unirest.http.HttpResponse
+import com.mashape.unirest.http.Unirest
+import okhttp3.*
 import java.util.concurrent.TimeUnit
+
 
 class getAll {
     private val client: OkHttpClient = OkHttpClient.Builder()
@@ -45,6 +45,17 @@ class getAll {
 //        println(sum34)
 //        println(sum5 - sum34)
         return sum5 - sum34
+    }
+
+    fun sendMessage(message: String, userID: String) {
+        Unirest.setTimeouts(0, 0)
+        val response: HttpResponse<String> =
+            Unirest.post("https://api.telegram.org/bot5037121354:AAFDxIVN22oerEsKrnDXyMooB4nTa-Zwzn4/sendMessage")
+                .field("chat_id", userID)
+                .field("text", message)
+                .asString()
+
+
     }
 
 }

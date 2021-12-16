@@ -2,24 +2,21 @@ import CVD.CVD
 import CVD.check.Driver
 import junit.framework.Assert.assertEquals
 import org.junit.After
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.openqa.selenium.By
 import org.openqa.selenium.Dimension
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.interactions.Action
-import org.openqa.selenium.interactions.Actions
-import java.math.RoundingMode
-import java.text.DecimalFormat
+import java.io.File
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
 class RunnerTest {
     private lateinit var driver: ChromeDriver
 
     private val webLink: String = "https://trading-system.tecman.ru/"
-    private val binanceLink: String = "https://www.binance.com/ru/trade/BTC_USDT?layout=basic"
 
     @Before
     fun singUp() {
@@ -36,29 +33,43 @@ class RunnerTest {
 
     @Test
     fun check() {
-        val builder: Actions = Actions(driver)
-
-
         driver.get(webLink)
-
         var exm: WebElement =
-            driver.findElement(By.xpath("//body/div[@id='app']/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/input[1]"))
+            driver.findElement(By.xpath("//body/div[@id='app']/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/input[1]")) // Поле с логином
         exm.sendKeys("admin")
-        exm = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/form[1]/div[2]/div[2]/div[1]/div[1]/input[1]"))
+        exm = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/form[1]/div[2]/div[2]/div[1]/div[1]/input[1]")) // Поле с паролем
         exm.sendKeys("Lh4iX9NkwLeuWw%u")
-        exm = driver.findElement(By.xpath("//span[contains(text(),'Войти')]"))
+        exm = driver.findElement(By.xpath("//span[contains(text(),'Войти')]")) // Кнопка войти
         exm.click()
         exm =
-            driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/section[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[3]"))
+            driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/section[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[3]")) // Значение в таблице
 
         val fr = (exm.getAttribute("textContent").toString()).replace(".", ",")
 
 
-        val or = String.format("%.4f", getAll().get())
-        assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса ", or ,fr)
-        println("Значения совпадают: $fr - c сайта, $or - с бинанса, все ОК")
+        val or = String.format("%.4f", getAll().get()) // Формат с 4мя знаками после запятой
+        val file =
+            File("status.txt") // Файл со статусом повторной отправки 0 - пред тест пройден, 1 - предыдущий тест провален
+        val users = File("users_id.txt") // Список ID пользователей с телеги
+        val logStat = File( LocalDate.now().toString() + " logStat.txt") // Файл с логами
+        if (or != fr) {
+            logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с бинанса\n"))
 
+            if (file.readText() == "0") {
+                for (i in users.readText().split(",")) { // Отправка сообщений боту по ID пользователя
+                    getAll().sendMessage("Значения не совпадают: $fr - c сайта, $or - с бинанса", i)
+                }
+                file.writeText("1")
+            }
 
+            assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса ", or, fr)
+
+        } else {
+            file.writeText("0")
+            println("Значения совпадают: $fr - c сайта, $or - с бинанса, все ОК")
+            logStat.appendText((LocalDateTime.now().toString() + " Значения совпадают: $fr - c сайта, $or - с бинанса, все ОК\n"))
+
+        }
     }
 
 
