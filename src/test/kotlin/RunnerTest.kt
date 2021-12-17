@@ -46,15 +46,14 @@ class RunnerTest {
         exm =
             driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/section[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[3]")) // Значение в таблице
 
-        val fr = (exm.getAttribute("textContent").toString()).replace(".", ",")
+        val fr = (exm.getAttribute("textContent").toString()).toDouble()
 
-
-        val or = String.format("%.4f", getAll().get()) // Формат с 4мя знаками после запятой
+        val or = String.format("%.4f", getAll().get()).replace(",",".") // Формат с 4мя знаками после запятой
         val file =
             File("status.txt") // Файл со статусом повторной отправки 0 - пред тест пройден, 1 - предыдущий тест провален
         val users = File("users_id.txt") // Список ID пользователей с телеги
         val logStat = File( LocalDate.now().toString() + " logStat.txt") // Файл с логами
-        if (or != fr) {
+        if (or.toDouble() != fr) {
             logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с бинанса\n"))
 
             if (file.readText() == "0") {
