@@ -1,3 +1,5 @@
+package com.main
+
 import com.mashape.unirest.http.HttpResponse
 import com.mashape.unirest.http.Unirest
 import okhttp3.*
@@ -50,7 +52,7 @@ class getAll {
     fun sendMessage(message: String, userID: String) {
         Unirest.setTimeouts(0, 0)
         val response: HttpResponse<String> =
-            Unirest.post("https://api.telegram.org/bot5037121354:AAFDxIVN22oerEsKrnDXyMooB4nTa-Zwzn4/sendMessage")
+            Unirest.post("https://api.telegram.org/bot5037121354:AAFXaT3XjpHvklpntF7gghsmsKrUjG-RoBQ/sendMessage")
                 .field("chat_id", userID)
                 .field("text", message)
                 .asString()

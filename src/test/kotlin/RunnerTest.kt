@@ -1,3 +1,5 @@
+package com.main
+
 import CVD.CVD
 import CVD.check.Driver
 import junit.framework.Assert.assertEquals
