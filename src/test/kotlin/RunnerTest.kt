@@ -56,12 +56,12 @@ class RunnerTest {
         if (or.toDouble() != fr) {
             logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с бинанса\n"))
 
-            if (file.readText() == "0") {
+//            if (file.readText() == "0") {
                 for (i in users.readText().split(",")) { // Отправка сообщений боту по ID пользователя
                     getAll().sendMessage("Значения не совпадают: $fr - c сайта, $or - с бинанса", i)
                 }
-                file.writeText("1")
-            }
+//                file.writeText("1")
+//            }
 
             assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса ", or, fr)
 
