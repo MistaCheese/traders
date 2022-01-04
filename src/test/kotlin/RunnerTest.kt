@@ -63,7 +63,7 @@ class RunnerTest {
 //                file.writeText("1")
 //            }
 
-            assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса ", or, fr)
+            assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса :x:", or, fr)
 
         } else {
             file.writeText("0")
