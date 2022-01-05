@@ -54,7 +54,7 @@ class RunnerTest {
         val users = File("users_id.txt") // Список ID пользователей с телеги
         val logStat = File( LocalDate.now().toString() + " logStat.txt") // Файл с логами
         if (or.toDouble() != fr) {
-            logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с бинанса\n"))
+            logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с бинанса ===========================\n"))
 
 //            if (file.readText() == "0") {
                 for (i in users.readText().split(",")) { // Отправка сообщений боту по ID пользователя
