@@ -58,7 +58,7 @@ class RunnerTest {
 
 //            if (file.readText() == "0") {
                 for (i in users.readText().split(",")) { // Отправка сообщений боту по ID пользователя
-                    getAll().sendMessage("Значения не совпадают: $fr - c сайта, $or - с бинанса :x:", i)
+                    getAll().sendMessage("Значения не совпадают: \n$fr - c сайта, \n$or - с бинанса :x:", i)
                 }
 //                file.writeText("1")
 //            }
