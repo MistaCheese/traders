@@ -54,21 +54,21 @@ class RunnerTest {
         val users = File("users_id.txt") // Список ID пользователей с телеги
         val logStat = File( LocalDate.now().toString() + " logStat.txt") // Файл с логами
         if (or.toDouble() != fr) {
-            logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с бинанса ===========================\n"))
+            logStat.appendText((LocalDateTime.now().toString() + " Значения не совпадают: $fr - c сайта, $or - с byBit ===========================\n"))
 
 //            if (file.readText() == "0") {
                 for (i in users.readText().split(",")) { // Отправка сообщений боту по ID пользователя
-                    getAll().sendMessage("Значения не совпадают: \n$fr - c сайта, \n$or - с бинанса :x:", i)
+                    getAll().sendMessage("Значения не совпадают: \n$fr - c сайта, \n$or - с byBit :x:", i)
                 }
 //                file.writeText("1")
 //            }
 
-            assertEquals("Значения не совпадают: $fr - c сайта, $or - с бинанса", or, fr)
+            assertEquals("Значения не совпадают: $fr - c сайта, $or - с byBit", or, fr)
 
         } else {
             file.writeText("0")
-            println("Значения совпадают: $fr - c сайта, $or - с бинанса, все ОК")
-            logStat.appendText((LocalDateTime.now().toString() + " Значения совпадают: $fr - c сайта, $or - с бинанса, все ОК\n"))
+            println("Значения совпадают: $fr - c сайта, $or - с byBit, все ОК")
+            logStat.appendText((LocalDateTime.now().toString() + " Значения совпадают: $fr - c сайта, $or - с byBit, все ОК\n"))
 
         }
     }
